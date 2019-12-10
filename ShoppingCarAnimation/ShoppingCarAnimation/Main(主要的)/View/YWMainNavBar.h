@@ -14,7 +14,7 @@
 
 @property(nonatomic,assign)CGFloat navBarAlpha;
 
-//@property(nonatomic,strong)UIColor *navBarTintColor;
+@property(nonatomic,strong)UIColor *navBarTintColor;
 
 @property(nonatomic,strong)UIColor *navBarColor;
 

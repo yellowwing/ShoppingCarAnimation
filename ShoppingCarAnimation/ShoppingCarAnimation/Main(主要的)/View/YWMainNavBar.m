@@ -8,7 +8,9 @@
 
 #import "YWMainNavBar.h"
 
-#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define kDevice_Is_iPhoneX (([[UIApplication sharedApplication] statusBarFrame].size.height == 44.0f) ? (YES):(NO))
+
 
 @implementation YWMainNavBar
 
@@ -43,22 +45,7 @@
     
 }
 
-//先不做这效果了
-//-(void)setIsNeedGradientLayer:(BOOL)isNeedGradientLayer{
-//
-//    _isNeedGradientLayer = isNeedGradientLayer;
-//
-//    if (isNeedGradientLayer) {
-//
-//        self.backgroundColor = [UIColor clearColor];
-//    }
-//    else{
-//
-//
-//        self.backgroundColor = self.navBarColor;
-//    }
-//
-//}
+
 
 -(void)setNavBarAlpha:(CGFloat)navBarAlpha{
     
@@ -67,22 +54,7 @@
     self.alpha = navBarAlpha;
 }
 
-//-(void)setNavBarTintColor:(UIColor *)navBarTintColor{
-//
-//    _navBarTintColor = navBarTintColor;
-//
-//    for (UIView *view in self.subviews) {
-//        if ([view isKindOfClass:[UIButton class]]) {
-//            UIButton *button = (UIButton*)view;
-//            [button setTitleColor:navBarTintColor forState:UIControlStateNormal];
-//        }
-//        if ([view isKindOfClass:[UILabel class]]) {
-//            UILabel *label = (UILabel *)view;
-//            label.textColor = navBarTintColor;
-//        }
-//    }
-//
-//}
+
 
 -(void)setNavBarColor:(UIColor *)navBarColor{
     
@@ -116,7 +88,7 @@
     
     [self addSubview:leftItem];
     
-//    self.navBarTintColor = self.navBarTintColor;
+    self.navBarTintColor = self.navBarTintColor;
    
 }
 
@@ -144,7 +116,7 @@
     
     [self addSubview:rightItem];
     
-//    self.navBarTintColor = self.navBarTintColor;
+    self.navBarTintColor = self.navBarTintColor;
     
 }
 
@@ -173,7 +145,7 @@
     
     [self addSubview:titleView];
     
-//    self.navBarTintColor = self.navBarTintColor;
+    self.navBarTintColor = self.navBarTintColor;
 }
 
 
@@ -195,6 +167,23 @@
     titleView.textAlignment = NSTextAlignmentCenter;
     
     self.titleView = titleView;
+}
+
+-(void)setNavBarTintColor:(UIColor *)navBarTintColor{
+
+    _navBarTintColor = navBarTintColor;
+
+    for (UIView *view in self.subviews) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton*)view;
+            [button setTitleColor:navBarTintColor forState:UIControlStateNormal];
+        }
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            label.textColor = navBarTintColor;
+        }
+    }
+
 }
 
 

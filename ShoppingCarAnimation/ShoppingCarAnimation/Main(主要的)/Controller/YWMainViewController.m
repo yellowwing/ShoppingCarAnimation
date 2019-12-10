@@ -17,12 +17,12 @@
 @implementation YWMainViewController
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     //设置文字颜色
-//    self.navBar.navBarTintColor = [UIColor whiteColor];
+    self.navBar.navBarTintColor = [UIColor whiteColor];
     
     //设置bar背景色
     self.navBar.navBarColor = [UIColor orangeColor];

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "YWTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +23,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor blackColor];
     
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view.backgroundColor = [UIColor redColor];
+    UIViewController *vc = [[YWTabBarController alloc] init];
     
     self.window.rootViewController = vc;
     

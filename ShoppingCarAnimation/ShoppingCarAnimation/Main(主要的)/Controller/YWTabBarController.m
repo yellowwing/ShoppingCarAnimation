@@ -10,20 +10,23 @@
 
 
 #import "YWNavigationController.h"
+#import "YWMainViewController.h"
 
+#import "YWHomeController.h"
 
 
 @interface YWTabBarController ()<UITabBarDelegate>
 
 
+
 //首页
-@property (nonatomic, strong) UIViewController *homeVC;
+@property (nonatomic, strong) YWMainViewController *homeVC;
 
 //已选
-@property (nonatomic, strong) UIViewController *selectedVC;
+@property (nonatomic, strong) YWMainViewController *selectedVC;
 
 //我的
-@property (nonatomic, strong) UIViewController *meVC;
+@property (nonatomic, strong) YWMainViewController *meVC;
 
 @end
 
@@ -65,21 +68,21 @@
 
 -(void)setupAllChildViewControllers{
     
-    UIViewController *homeVC = [[UIViewController alloc] init];
-    [self setupChildViewController:homeVC title:@"首页" imageName:@"home"  selectedImageName:@"homeSelected"];
+    YWHomeController *homeVC = [[YWHomeController alloc] initWithNibName:@"YWHomeController" bundle:nil];
+    [self setupChildViewController:homeVC title:@"" imageName:@"2首页01"  selectedImageName:@"2首页02"];
     self.homeVC = homeVC;
 
 
-    UIViewController *selectedVC = [[UIViewController alloc] init];
-    [self setupChildViewController:selectedVC title:@"已选" imageName:@"selected" selectedImageName:@"selectedSelected"];
+    YWMainViewController *selectedVC = [[YWMainViewController alloc] init];
+    [self setupChildViewController:selectedVC title:@"" imageName:@"2超市01" selectedImageName:@"2超市02"];
     self.selectedVC = selectedVC;
 
 
-    UIViewController *meVC = [[UIViewController alloc] init];
-    [self setupChildViewController:meVC title:@"我的" imageName:@"me" selectedImageName:@"meSelected"];
+    YWMainViewController *meVC = [[YWMainViewController alloc] init];
+    [self setupChildViewController:meVC title:@"" imageName:@"2我01" selectedImageName:@"2我02"];
     self.meVC = meVC;
     
-    
+//     self.meVC.navigationController.tabBarItem.badgeValue = @"1";
 
 }
 
@@ -93,10 +96,10 @@
     childVc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     //改变图片位置
-    [childVc.tabBarItem setImageInsets:UIEdgeInsetsMake(-2, 0, 2, 0)];
+//    [childVc.tabBarItem setImageInsets:UIEdgeInsetsMake(-2, 0, 2, 0)];
     
     //改变文字大小位置
-    [childVc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+//    [childVc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -3)];
     
     //Normal
     [childVc.tabBarItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]} forState:UIControlStateNormal];
