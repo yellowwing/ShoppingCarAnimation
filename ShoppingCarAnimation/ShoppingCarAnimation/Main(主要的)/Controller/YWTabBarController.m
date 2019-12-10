@@ -11,46 +11,31 @@
 
 #import "YWNavigationController.h"
 
-#import "YWMeStatus.h"
-#import "YWHomeController.h"
-#import "YWSelectedController.h"
-#import "YWMeController.h"
 
 
 @interface YWTabBarController ()<UITabBarDelegate>
 
-@property(nonatomic,strong)YWMeStatus *meStatus;
 
 //首页
-@property (nonatomic, strong) YWHomeController *homeVC;
+@property (nonatomic, strong) UIViewController *homeVC;
 
 //已选
-@property (nonatomic, strong) YWSelectedController *selectedVC;
+@property (nonatomic, strong) UIViewController *selectedVC;
 
 //我的
-@property (nonatomic, strong) YWMeController *meVC;
+@property (nonatomic, strong) UIViewController *meVC;
 
 @end
 
 @implementation YWTabBarController
 
 
-//为了适配iOS11，无法使用自定义tabBar，用系统的
 
-//要注意的是：当你改了模型记得把它保存到本地
-//懒加载meStatus
--(YWMeStatus *)meStatus{
-    //从本地加载meStatus
-    _meStatus = [NSKeyedUnarchiver unarchiveObjectWithFile:YWMepath];
-    
-    return _meStatus;
-    
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tabBar.tintColor = mainColor;
+    self.tabBar.tintColor = [UIColor orangeColor];
     self.tabBar.translucent = NO;
     [[UITabBar appearance] setBarTintColor: [UIColor whiteColor]];
     
@@ -80,17 +65,17 @@
 
 -(void)setupAllChildViewControllers{
     
-    YWHomeController *homeVC = [[YWHomeController alloc] initWithNibName:@"YWHomeController" bundle:nil];
+    UIViewController *homeVC = [[UIViewController alloc] init];
     [self setupChildViewController:homeVC title:@"首页" imageName:@"home"  selectedImageName:@"homeSelected"];
     self.homeVC = homeVC;
 
 
-    YWSelectedController *selectedVC = [[YWSelectedController alloc] initWithNibName:@"YWSelectedController" bundle:nil];
+    UIViewController *selectedVC = [[UIViewController alloc] init];
     [self setupChildViewController:selectedVC title:@"已选" imageName:@"selected" selectedImageName:@"selectedSelected"];
     self.selectedVC = selectedVC;
 
 
-    YWMeController *meVC = [[YWMeController alloc] initWithNibName:@"YWMeController" bundle:nil];
+    UIViewController *meVC = [[UIViewController alloc] init];
     [self setupChildViewController:meVC title:@"我的" imageName:@"me" selectedImageName:@"meSelected"];
     self.meVC = meVC;
     

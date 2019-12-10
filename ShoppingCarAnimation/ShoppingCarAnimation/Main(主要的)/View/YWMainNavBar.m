@@ -8,6 +8,8 @@
 
 #import "YWMainNavBar.h"
 
+#define kDevice_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
 @implementation YWMainNavBar
 
 - (instancetype)initWithFrame:(CGRect)frame
