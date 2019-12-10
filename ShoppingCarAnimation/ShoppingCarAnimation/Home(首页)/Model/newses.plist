@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>icon</key>
+		<string>IMG_1490.jpg</string>
+		<key>title</key>
+		<string>好吃 好吃 真的太好吃</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>IMG_1500.jpg</string>
+		<key>title</key>
+		<string>味道一级棒</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>IMG_1506.jpg</string>
+		<key>title</key>
+		<string>真的太舒服了</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>IMG_1503.jpg</string>
+		<key>title</key>
+		<string>一句话 高大上</string>
+	</dict>
+	<dict>
+		<key>icon</key>
+		<string>IMG_1505.jpg</string>
+		<key>title</key>
+		<string>环境一流 服务一流</string>
+	</dict>
+</array>
+</plist>
