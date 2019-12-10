@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FD1FB4F7239F7EFD00A271BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB4F6239F7EFD00A271BF /* AppDelegate.m */; };
-		FD1FB4FA239F7EFD00A271BF /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB4F9239F7EFD00A271BF /* SceneDelegate.m */; };
 		FD1FB4FD239F7EFD00A271BF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB4FC239F7EFD00A271BF /* ViewController.m */; };
 		FD1FB500239F7EFD00A271BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD1FB4FE239F7EFD00A271BF /* Main.storyboard */; };
 		FD1FB502239F7EFF00A271BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD1FB501239F7EFF00A271BF /* Assets.xcassets */; };
@@ -16,6 +15,14 @@
 		FD1FB508239F7EFF00A271BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB507239F7EFF00A271BF /* main.m */; };
 		FD1FB512239F7EFF00A271BF /* ShoppingCarAnimationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB511239F7EFF00A271BF /* ShoppingCarAnimationTests.m */; };
 		FD1FB51D239F7EFF00A271BF /* ShoppingCarAnimationUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB51C239F7EFF00A271BF /* ShoppingCarAnimationUITests.m */; };
+		FD1FB53D239F907F00A271BF /* YWMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB52E239F907F00A271BF /* YWMainViewController.m */; };
+		FD1FB53E239F907F00A271BF /* YWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB530239F907F00A271BF /* YWTabBarController.m */; };
+		FD1FB53F239F907F00A271BF /* YWNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB531239F907F00A271BF /* YWNavigationController.m */; };
+		FD1FB540239F907F00A271BF /* YWMainNavBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB533239F907F00A271BF /* YWMainNavBarController.m */; };
+		FD1FB541239F907F00A271BF /* IWBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB536239F907F00A271BF /* IWBadgeButton.m */; };
+		FD1FB542239F907F00A271BF /* MyTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB539239F907F00A271BF /* MyTabBarButton.m */; };
+		FD1FB543239F907F00A271BF /* YWMainNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB53B239F907F00A271BF /* YWMainNavBar.m */; };
+		FD1FB544239F907F00A271BF /* MyTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1FB53C239F907F00A271BF /* MyTabBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +46,6 @@
 		FD1FB4F2239F7EFC00A271BF /* ShoppingCarAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingCarAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1FB4F5239F7EFD00A271BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD1FB4F6239F7EFD00A271BF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FD1FB4F8239F7EFD00A271BF /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		FD1FB4F9239F7EFD00A271BF /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		FD1FB4FB239F7EFD00A271BF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		FD1FB4FC239F7EFD00A271BF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		FD1FB4FF239F7EFD00A271BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,6 +59,22 @@
 		FD1FB518239F7EFF00A271BF /* ShoppingCarAnimationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoppingCarAnimationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD1FB51C239F7EFF00A271BF /* ShoppingCarAnimationUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShoppingCarAnimationUITests.m; sourceTree = "<group>"; };
 		FD1FB51E239F7EFF00A271BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD1FB52C239F907F00A271BF /* YWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWTabBarController.h; sourceTree = "<group>"; };
+		FD1FB52D239F907F00A271BF /* YWNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWNavigationController.h; sourceTree = "<group>"; };
+		FD1FB52E239F907F00A271BF /* YWMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWMainViewController.m; sourceTree = "<group>"; };
+		FD1FB52F239F907F00A271BF /* YWMainNavBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWMainNavBarController.h; sourceTree = "<group>"; };
+		FD1FB530239F907F00A271BF /* YWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWTabBarController.m; sourceTree = "<group>"; };
+		FD1FB531239F907F00A271BF /* YWNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWNavigationController.m; sourceTree = "<group>"; };
+		FD1FB532239F907F00A271BF /* YWMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWMainViewController.h; sourceTree = "<group>"; };
+		FD1FB533239F907F00A271BF /* YWMainNavBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWMainNavBarController.m; sourceTree = "<group>"; };
+		FD1FB535239F907F00A271BF /* MyTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBarButton.h; sourceTree = "<group>"; };
+		FD1FB536239F907F00A271BF /* IWBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWBadgeButton.m; sourceTree = "<group>"; };
+		FD1FB537239F907F00A271BF /* YWMainNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWMainNavBar.h; sourceTree = "<group>"; };
+		FD1FB538239F907F00A271BF /* MyTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabBar.h; sourceTree = "<group>"; };
+		FD1FB539239F907F00A271BF /* MyTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBarButton.m; sourceTree = "<group>"; };
+		FD1FB53A239F907F00A271BF /* IWBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWBadgeButton.h; sourceTree = "<group>"; };
+		FD1FB53B239F907F00A271BF /* YWMainNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWMainNavBar.m; sourceTree = "<group>"; };
+		FD1FB53C239F907F00A271BF /* MyTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabBar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,10 +125,9 @@
 		FD1FB4F4239F7EFC00A271BF /* ShoppingCarAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				FD1FB52A239F907F00A271BF /* Main(主要的) */,
 				FD1FB4F5239F7EFD00A271BF /* AppDelegate.h */,
 				FD1FB4F6239F7EFD00A271BF /* AppDelegate.m */,
-				FD1FB4F8239F7EFD00A271BF /* SceneDelegate.h */,
-				FD1FB4F9239F7EFD00A271BF /* SceneDelegate.m */,
 				FD1FB4FB239F7EFD00A271BF /* ViewController.h */,
 				FD1FB4FC239F7EFD00A271BF /* ViewController.m */,
 				FD1FB4FE239F7EFD00A271BF /* Main.storyboard */,
@@ -135,6 +155,45 @@
 				FD1FB51E239F7EFF00A271BF /* Info.plist */,
 			);
 			path = ShoppingCarAnimationUITests;
+			sourceTree = "<group>";
+		};
+		FD1FB52A239F907F00A271BF /* Main(主要的) */ = {
+			isa = PBXGroup;
+			children = (
+				FD1FB52B239F907F00A271BF /* Controller */,
+				FD1FB534239F907F00A271BF /* View */,
+			);
+			path = "Main(主要的)";
+			sourceTree = "<group>";
+		};
+		FD1FB52B239F907F00A271BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FD1FB52C239F907F00A271BF /* YWTabBarController.h */,
+				FD1FB530239F907F00A271BF /* YWTabBarController.m */,
+				FD1FB52D239F907F00A271BF /* YWNavigationController.h */,
+				FD1FB531239F907F00A271BF /* YWNavigationController.m */,
+				FD1FB52F239F907F00A271BF /* YWMainNavBarController.h */,
+				FD1FB533239F907F00A271BF /* YWMainNavBarController.m */,
+				FD1FB52E239F907F00A271BF /* YWMainViewController.m */,
+				FD1FB532239F907F00A271BF /* YWMainViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FD1FB534239F907F00A271BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FD1FB535239F907F00A271BF /* MyTabBarButton.h */,
+				FD1FB539239F907F00A271BF /* MyTabBarButton.m */,
+				FD1FB53A239F907F00A271BF /* IWBadgeButton.h */,
+				FD1FB536239F907F00A271BF /* IWBadgeButton.m */,
+				FD1FB537239F907F00A271BF /* YWMainNavBar.h */,
+				FD1FB53B239F907F00A271BF /* YWMainNavBar.m */,
+				FD1FB538239F907F00A271BF /* MyTabBar.h */,
+				FD1FB53C239F907F00A271BF /* MyTabBar.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,10 +326,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD1FB544239F907F00A271BF /* MyTabBar.m in Sources */,
+				FD1FB540239F907F00A271BF /* YWMainNavBarController.m in Sources */,
+				FD1FB541239F907F00A271BF /* IWBadgeButton.m in Sources */,
+				FD1FB53E239F907F00A271BF /* YWTabBarController.m in Sources */,
+				FD1FB53F239F907F00A271BF /* YWNavigationController.m in Sources */,
 				FD1FB4FD239F7EFD00A271BF /* ViewController.m in Sources */,
+				FD1FB542239F907F00A271BF /* MyTabBarButton.m in Sources */,
+				FD1FB543239F907F00A271BF /* YWMainNavBar.m in Sources */,
+				FD1FB53D239F907F00A271BF /* YWMainViewController.m in Sources */,
 				FD1FB4F7239F7EFD00A271BF /* AppDelegate.m in Sources */,
 				FD1FB508239F7EFF00A271BF /* main.m in Sources */,
-				FD1FB4FA239F7EFD00A271BF /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K9LWN778L7;
+				DEVELOPMENT_TEAM = 9GS5H72VYE;
 				INFOPLIST_FILE = ShoppingCarAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,7 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K9LWN778L7;
+				DEVELOPMENT_TEAM = 9GS5H72VYE;
 				INFOPLIST_FILE = ShoppingCarAnimation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
