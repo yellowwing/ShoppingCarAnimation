@@ -25,6 +25,9 @@
 
 @implementation YWHomeController
 
+#warning - 贝塞尔曲线、简书、简历2份
+#warning - 另外2份项目：建github、创建项目、抄、简书、简历2份
+
 -(NSMutableArray*)imageViews{
 
     if (_imageViews == nil) {
@@ -152,8 +155,8 @@
     
     //toValue不能写死，它是相对于做动画的控件的point而言的，所以要做一些计算
     
-    CGFloat desY = self.view.frame.size.height - 60;
-    CGFloat desX = self.view.frame.size.width - 60;
+    CGFloat desX = [UIScreen mainScreen].bounds.size.width - 80;
+    CGFloat desY = [UIScreen mainScreen].bounds.size.height - 80;
     
     CGFloat moveY = desY - rects.origin.y;
     CGFloat moveX = desX - rects.origin.x;
@@ -183,12 +186,12 @@
 
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
 
-   // 等动画结束就销毁最后一个imageView，这样不会占内存了
-   UIImageView *imageView = [self.imageViews lastObject];
+   // 等动画结束就销毁第一个imageView，这样不会占内存了
+   UIImageView *imageView = [self.imageViews firstObject];
     [imageView removeFromSuperview];
     [self.imageViews removeObject:imageView];
     
-//    NSLog(@"==%lu ==%lu",(unsigned long)self.view.window.subviews.count,(unsigned long)self.imageViews.count);
+    NSLog(@"==%lu ==%lu",(unsigned long)self.view.window.subviews.count,(unsigned long)self.imageViews.count);
     
     
 #pragma mark - 让badgeValue＋1

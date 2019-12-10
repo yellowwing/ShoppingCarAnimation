@@ -47,6 +47,35 @@
     [self setupAllChildViewControllers];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saveAllBadge:) name:@"badgeNotification" object:nil];
+    
+    //初始化badge
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger badge = [defaults integerForKey:@"badge"];
+    
+    badge = 0;
+    
+    [defaults setInteger:badge forKey:@"badge"];
+    
+    [defaults synchronize];
+    
+    self.meVC.navigationController.tabBarItem.badgeValue = nil;
+               
+}
+
+
+-(void)saveAllBadge:(NSNotification *)notification{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSInteger badge = [defaults integerForKey:@"badge"];
+    
+    NSString *badgeValue = [NSString stringWithFormat:@"%ld",badge];
+    self.meVC.navigationController.tabBarItem.badgeValue = badgeValue;
+                   
+//    [UIApplication sharedApplication].applicationIconBadgeNumber = badgeValue.integerValue;
+       
 }
 
 
