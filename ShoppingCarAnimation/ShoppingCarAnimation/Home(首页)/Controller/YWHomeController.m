@@ -27,9 +27,6 @@
 
 @implementation YWHomeController
 
-#warning - 贝塞尔曲线☑️、简书、简历2份
-
-#warning - 另外2份项目：建github、创建项目、抄、简书、简历2份
 
 -(NSMutableArray*)imageViews{
 
