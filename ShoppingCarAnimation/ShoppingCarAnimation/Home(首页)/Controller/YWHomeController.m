@@ -21,11 +21,14 @@
 
 @property (nonatomic, strong) NSArray *tgs;
 
+@property(nonatomic,assign)BOOL isBezierPathAnimation;
+
 @end
 
 @implementation YWHomeController
 
-#warning - 贝塞尔曲线、简书、简历2份
+#warning - 贝塞尔曲线☑️、简书、简历2份
+
 #warning - 另外2份项目：建github、创建项目、抄、简书、简历2份
 
 -(NSMutableArray*)imageViews{
@@ -81,6 +84,38 @@
     HomeHeaderView *header = [HomeHeaderView headerView];
     
     self.tableView.tableHeaderView = header;
+    
+    [self setupRightItem];
+}
+
+-(void)setupRightItem{
+    
+    UIButton *editBtn = [[UIButton alloc] init];
+    [editBtn setTitle:@"切换动画" forState:UIControlStateNormal];
+    editBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    editBtn.bounds = CGRectMake(0, 0, 120, 44);
+    editBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+
+//        [editBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 13)];
+        [editBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+    self.navBar.rightItem = editBtn;
+    [editBtn addTarget:self action:@selector(edit) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)edit{
+    
+    if (self.isBezierPathAnimation) {
+        
+        //转为组合动画
+        self.isBezierPathAnimation = NO;
+        
+    }
+    else{
+        
+        //转为贝塞尔曲线动画
+        self.isBezierPathAnimation = YES;
+        
+    }
 }
 
 -(void)badgeValueInstance{
@@ -120,63 +155,146 @@
     return cell;
 }
 
--(void)tgCell:(YWTgCell *)cell didClickBuyWithImageView:(UIImageView *)iconView{
+-(void)berzierAnimationWithCell:(UITableViewCell*)cell andIconView:(UIImageView *)iconView{
+    
+    #pragma mark - 转换父控件所在位置
+        CGRect rects = [cell.contentView convertRect:iconView.frame toView:self.view];
 
-#pragma mark - 转换父控件所在位置
-    CGRect rects = [cell.contentView convertRect:iconView.frame toView:self.view];
+        //    NSLog(@"我是位置：%@",NSStringFromCGRect(rects));
+            
+            UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
+            imageView.layer.cornerRadius = 5;
+            [self.view.window addSubview:imageView];
+            imageView.frame = rects;
+            imageView.image = iconView.image;
+            //用数组装着imageView,等动画结束就销毁imageView
+            [self.imageViews addObject:imageView];
     
-//    NSLog(@"我是位置：%@",NSStringFromCGRect(rects));
+
+    CGFloat Wi = [UIScreen mainScreen].bounds.size.width;
+    CGFloat He = [UIScreen mainScreen].bounds.size.height;
     
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    imageView.clipsToBounds = YES;
-    imageView.layer.cornerRadius = 5;
-    [self.view.window addSubview:imageView];
-    imageView.frame = rects;
-    imageView.image = iconView.image;
-    //用数组装着imageView,等动画结束就销毁imageView
-    [self.imageViews addObject:imageView];
+    CGFloat desX = Wi/3*2 + Wi/3/2 + 25;
+    CGFloat desY = He - 40;
     
-#pragma mark - 加入购物车的动画
-    // 1.创建旋转动画对象
-    CABasicAnimation *rotate = [CABasicAnimation animation];
-    rotate.keyPath = @"transform.rotation";
-    rotate.toValue = @(4 * M_PI);
+    CGPoint startPoint = CGPointMake(rects.origin.x+rects.size.width/2, rects.origin.y+rects.size.height/2);
+    
+    CGPoint endpoint = CGPointMake(desX, desY);
+    
+    //控制曲线幅度的点
+    CGPoint controlPoint = CGPointMake(endpoint.x-100, startPoint.y-300);
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path moveToPoint:startPoint];
+    [path addQuadCurveToPoint:endpoint controlPoint:controlPoint];
+    
+    
+    //创建关键帧
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    
+    animation.path = path.CGPath;
     
     
     // 2.创建缩放动画对象
     CABasicAnimation *scale = [CABasicAnimation animation];
     scale.keyPath = @"transform.scale";
-    scale.toValue = @(0.0);
+    scale.toValue = @(0.1);
     
-    // 3.平移动画
-    CABasicAnimation *move = [CABasicAnimation animation];
-    move.keyPath = @"transform.translation";
-    
-    //toValue不能写死，它是相对于做动画的控件的point而言的，所以要做一些计算
-    
-    CGFloat desX = [UIScreen mainScreen].bounds.size.width - 80;
-    CGFloat desY = [UIScreen mainScreen].bounds.size.height - 80;
-    
-    CGFloat moveY = desY - rects.origin.y;
-    CGFloat moveX = desX - rects.origin.x;
-    
-    move.toValue = [NSValue valueWithCGPoint:CGPointMake(moveX, moveY)];
-    
+
     // 4.将所有的动画添加到动画组中
     CAAnimationGroup *group = [CAAnimationGroup animation];
-    group.animations = @[rotate, scale, move];
-    group.duration = 1;
-    group.delegate = self;
-    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    group.animations = @[animation, scale];
     
-//    下面两句是保持动画执行完毕后的状态
+    group.duration = 1;
+    group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    group.delegate = self;
+    
+    //当动画完成，停留到结束位置
     group.removedOnCompletion = NO;
     group.fillMode = kCAFillModeForwards;
     
     [imageView.layer addAnimation:group forKey:nil];
     
+    path = nil;
+    
+}
 
+-(void)groupAnimationWithCell:(UITableViewCell*)cell andIconView:(UIImageView *)iconView{
+
+    #pragma mark - 转换父控件所在位置
+        CGRect rects = [cell.contentView convertRect:iconView.frame toView:self.view];
+        
+    //    NSLog(@"我是位置：%@",NSStringFromCGRect(rects));
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        imageView.layer.cornerRadius = 5;
+        [self.view.window addSubview:imageView];
+        imageView.frame = rects;
+        imageView.image = iconView.image;
+        //用数组装着imageView,等动画结束就销毁imageView
+        [self.imageViews addObject:imageView];
+        
+    #pragma mark - 加入购物车的动画
+        // 1.创建旋转动画对象
+        CABasicAnimation *rotate = [CABasicAnimation animation];
+        rotate.keyPath = @"transform.rotation";
+        rotate.toValue = @(4 * M_PI);
+        
+        
+        // 2.创建缩放动画对象
+        CABasicAnimation *scale = [CABasicAnimation animation];
+        scale.keyPath = @"transform.scale";
+        scale.toValue = @(0.0);
+        
+        // 3.平移动画
+        CABasicAnimation *move = [CABasicAnimation animation];
+        move.keyPath = @"transform.translation";
+        
+       //toValue不能写死，它是相对于做动画的控件的point而言的，所以要做一些计算
+        
+        CGFloat Wi = [UIScreen mainScreen].bounds.size.width;
+        CGFloat He = [UIScreen mainScreen].bounds.size.height;
+        
+        CGFloat desX = Wi - 80;
+        CGFloat desY = He - 80;
+        
+        CGFloat moveY = desY - rects.origin.y;
+        CGFloat moveX = desX - rects.origin.x;
+        
+        move.toValue = [NSValue valueWithCGPoint:CGPointMake(moveX, moveY)];
+        
+        // 4.将所有的动画添加到动画组中
+        CAAnimationGroup *group = [CAAnimationGroup animation];
+        group.animations = @[rotate, scale, move];
+        group.duration = 1;
+        group.delegate = self;
+        group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        
+    //    下面两句是保持动画执行完毕后的状态
+        group.removedOnCompletion = NO;
+        group.fillMode = kCAFillModeForwards;
+        
+        [imageView.layer addAnimation:group forKey:nil];
+        
+}
+
+
+-(void)tgCell:(YWTgCell *)cell didClickBuyWithImageView:(UIImageView *)iconView{
+
+    if (self.isBezierPathAnimation) {
+        //贝塞尔曲线动画
+        [self berzierAnimationWithCell:cell andIconView:iconView];
+    }
+    else{
+        //组合动画
+        [self groupAnimationWithCell:cell andIconView:iconView];
+        
+    }
+    
 }
 
 #pragma mark - 动画的代理方法

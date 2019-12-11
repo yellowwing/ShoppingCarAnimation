@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     //设置文字颜色
     self.navBar.navBarTintColor = [UIColor whiteColor];
     
