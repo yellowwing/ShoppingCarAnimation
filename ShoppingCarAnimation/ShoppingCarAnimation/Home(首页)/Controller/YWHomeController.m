@@ -157,21 +157,21 @@
 
 -(void)berzierAnimationWithCell:(UITableViewCell*)cell andIconView:(UIImageView *)iconView{
     
-    #pragma mark - 转换父控件所在位置
-        CGRect rects = [cell.contentView convertRect:iconView.frame toView:self.view];
+#pragma mark - 转换父控件所在位置
+    CGRect rects = [cell.contentView convertRect:iconView.frame toView:self.view];
 
-        //    NSLog(@"我是位置：%@",NSStringFromCGRect(rects));
-            
-            UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            imageView.layer.cornerRadius = 5;
-            [self.view.window addSubview:imageView];
-            imageView.frame = rects;
-            imageView.image = iconView.image;
-            //用数组装着imageView,等动画结束就销毁imageView
-            [self.imageViews addObject:imageView];
+//    NSLog(@"我是位置：%@",NSStringFromCGRect(rects));
     
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    imageView.layer.cornerRadius = 5;
+    [self.view.window addSubview:imageView];
+    imageView.frame = rects;
+    imageView.image = iconView.image;
+    //用数组装着imageView,等动画结束就销毁imageView
+    [self.imageViews addObject:imageView];
+
 
     CGFloat Wi = [UIScreen mainScreen].bounds.size.width;
     CGFloat He = [UIScreen mainScreen].bounds.size.height;
@@ -183,7 +183,7 @@
     
     CGPoint endpoint = CGPointMake(desX, desY);
     
-    //控制曲线幅度的点
+    //控制曲线弧度幅度的点
     CGPoint controlPoint = CGPointMake(endpoint.x-100, startPoint.y-300);
     
     UIBezierPath *path = [UIBezierPath bezierPath];
@@ -203,7 +203,7 @@
     scale.toValue = @(0.1);
     
 
-    // 4.将所有的动画添加到动画组中
+    // 3.将所有的动画添加到动画组中
     CAAnimationGroup *group = [CAAnimationGroup animation];
     group.animations = @[animation, scale];
     
@@ -323,7 +323,7 @@
     
     [defaults synchronize];
     
-    NSString *badgeValue = [NSString stringWithFormat:@"%ld",badge];
+    NSString *badgeValue = [NSString stringWithFormat:@"%ld",(long)badge];
     
     //下面的方法都不行，只能发送通知叫tabBarController去增加了
     NSNotification *notification=[NSNotification notificationWithName:@"badgeNotification" object:self userInfo:@{@"context":badgeValue}];
